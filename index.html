@@ -19,16 +19,22 @@
     </section>
 
     <section class="main-content">
-      <h3>
-<a id="ccs-2016---oyente" class="anchor" href="#ccs-2016---oyente" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CCS 2016 - Oyente</h3>
+      <h2>
+<a id="ccs-2016-transcript" class="anchor" href="#ccs-2016-transcript" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CCS 2016 Transcript</h2>
 
 <hr>
+
+<h3>
+<a id="slide-2---background" class="anchor" href="#slide-2---background" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 2 - Background</h3>
 
 <p>Cryptocurrencies were first introduced to the world in 2009, through a digital currency that we know as Bitcoin. They operate on a decentralized network model, where transactions are performed and verified by nodes on a network, with no centralized/trusted parties. Since then, they have grown in number and volume, with the two most popular currencies - Bitcoin and Ethereum - currently operating at a market capitalization of 10 billion and 1 billion USD respectively. Originally introduced for peer-to-peer payments, they were soon explored as an avenue for automated payments - and most recently, for use in Smart Contracts.</p>
 
 <hr>
 
-<p>A Smart Contract is a computer program that encodes the rules and conditions of a contract in such a way that the contract can be executed and verified in an automated fashion. Originally introduced by Nick Szabo in a 1994 paper, they have seen adoption in both private and public settings.</p>
+<h3>
+<a id="slide-3---smart-contracts" class="anchor" href="#slide-3---smart-contracts" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 3 - Smart Contracts</h3>
+
+<p>A Smart Contract is a computer program that encodes the rules and conditions of a contract in such a way that the contract can be executed and verified in an automated fashion. From a simplistic viewpoint, a smart contract ensures a transfer of state, assets or capital, when a predefined set of conditions are met. Originally introduced by Nick Szabo in a 1994 paper, they have seen adoption in both private and public settings. </p>
 
 <p>The major introduction for smart contracts to the world came from Ethereum - a cryptocoin focusing primarily on executing turing-complete smart contracts on the blockchain. After one of the top 10 most most-valued crowdfunding campaigns of all time in 2014, Ethereum currently has over 17000 smart contracts.</p>
 
@@ -36,7 +42,9 @@
 
 <p>The contract is written in Solidity, a javascript-like language, and this snippet here implements a withdrawal function for investors in this particular contract. As we can see, there is a global balance being updated as well as an array of local balances, and a payout being sent in Ether - the currency in Ethereum - to the person making the call. Deceptively simple to understand and implement, this piece of code is then compiled into a stack-based bytecode that is executed and verified by the nodes on the Ethereum network.</p>
 
-<p>Unlike traditional systems, smart contracts are open to attack when operating on a public - permissionless - network, where anonymous adversaries may attempt to exploit their operation. Smart Contracts like this one can come to hold and transact large amounts of capital in their operating life, providing ample financial incentive. This is not accounting for the possibility of bugs in contract code that can lock away any amount of this capital forever irreversibly and irretrievably. In fact, this snippet of code belongs to a popular contract called TheDAO, a decentralized venture capital fund that was launched in May this year with a crowdfunding campaign that turned out to be the largest in history, amassing over a hundred and sixty million USD in capital from over 11000 investors, nearly 14% of all Ether tokens issued. Early June this year, a recursive splitting bug - which we will analyse in detail later -  was exploited that allowed attackers to drain over a third of this money - $50 million USD at the time - from the contract.</p>
+<p>There are many advantages to deploying smart contracts on a blockchain infrastructure. First of all, the open network increases accessibility, and reliability over traditional centralized systems by ensuring that there is no single point of failure. Second, the immutable ledger enhances trust that the results of a contract execution cannot be tampered with, and that the effects of a contract - a transfer of assets or capital - is final. The second point here is true to an extent - there is the possibility that a hard fork in the network may retroactively modify past records, but this is beyond the scope of this discussion.</p>
+
+<p>Unlike traditional systems, smart contracts are open to attack when operating on a public - permissionless - network, where anonymous adversaries may attempt to exploit their operation. Smart Contracts like this one can come to hold and transact large amounts of capital in their operating life, providing ample financial incentive. This is not accounting for the possibility of bugs in contract code that can lock away any amount of this capital forever irreversibly and irretrievably. In fact, this snippet of code belongs to a popular contract called TheDAO, a decentralized venture capital fund that was launched in May this year with a crowdfunding campaign that turned out to be the largest in history, amassing over a hundred and sixty million USD in capital from over 11000 investors, nearly 14% of all Ether tokens issued. Early June this year, a recursive splitting bug - which we will analyse in detail later -  was exploited that allowed attackers to drain over a third of this money - $50 million USD at the time - from the contract. This happened while the paper - outlining the possibility of the attack - was under submission.</p>
 
 <p>Moreover, smart contracts are immutable, which means that patches cannot be applied easily or sometimes at all. In fact, the vulnerability that led to the attack we've just seen was known and published some time before it was exploited.</p>
 
@@ -46,11 +54,19 @@
 
 <hr>
 
-<p>We introduce Oyente, a smart contract analyzer that is capable of detecting the bugs being discussed today, with a false positive rate less than 7%. The code has been open sourced, and is available for easy download and evaluation at this link.</p>
+<h3>
+<a id="slide-4---contributions" class="anchor" href="#slide-4---contributions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 4 - Contributions</h3>
 
-<p>We also introduce Etherlite, an improved version of Ethereum that patches these issues without needing to modify existing contract code.</p>
+<p>Here, we document several new classes of security bugs in Ethereum smart contracts.</p>
+
+<p>Second, we formalize the semantics of these smart contracts, and introduce Etherlite, an improved version of these semantics that patches these issues without needing to modify existing contract code.</p>
+
+<p>Finally, we introduce Oyente, a smart contract analyzer that is capable of detecting the bugs being discussed today, with a false positive rate less than 7%. The code has been open sourced, and is available for easy download and evaluation at this link.</p>
 
 <hr>
+
+<h3>
+<a id="slide-5---why" class="anchor" href="#slide-5---why" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 5 - Why</h3>
 
 <p>Why are these problems prevalent?</p>
 
@@ -60,11 +76,14 @@
 
 <hr>
 
+<h3>
+<a id="slide-7---danger-of-abstraction" class="anchor" href="#slide-7---danger-of-abstraction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 7 - Danger of Abstraction</h3>
+
 <p>Let us consider an example to illustrate the danger of abstraction.</p>
 
-<p>Solidity provides users access to a timestamp from within the contract through the <code>now</code> variable. A sample contract that stores a particular timeout of 4 weeks is shown. The syntax is rather easy to read and implement. The <code>now</code> variable is an alias for <code>block.timestamp</code>, which represents the timestamp of the current block. This has led to contracts such as theRun, which implements a payout controlled by a pseudo random number generator, the code for which is shown.</p>
+<p>Solidity provides users access to a timestamp from within the contract through the <code>now</code> variable. A sample contract that stores a particular timeout of 4 weeks is shown. The syntax is rather easy to read and implement. The <code>now</code> variable is an alias for <code>block.timestamp</code>, which represents the timestamp of the current block. This has led to contracts such as theRun, which implements a payout controlled by a random number generator, the code for which is shown.</p>
 
-<p>The function <code>random</code> uses the block timestamp as a salt, which is not uncommon in a traditional program. However, there is no global timestamp in the decentralized network, and the rules governing the assignment of a block timestamp only serve to provide an approximation.</p>
+<p>The function <code>random</code> uses the block timestamp as a secure random salt, which is not uncommon in a traditional program. However, there is no global timestamp in the decentralized network, and the rules governing the assignment of a block timestamp only serve to provide an approximation.</p>
 
 <p>This leaves the timestamp - and by extension, any contracts using it - open to manipulation by the miners. In reality, the timestamp can be changed by as much as 900 seconds by a miner, which allows him/her to manipulate the output of the contract to an advantage.</p>
 
@@ -72,18 +91,21 @@
 
 <hr>
 
+<h3>
+<a id="slide-8---semantic-gaps" class="anchor" href="#slide-8---semantic-gaps" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 8 - Semantic Gaps</h3>
+
 <p>Next, let us look at an example of how a semantic gap can be problematic.</p>
 
 <p>The contract <code>MarketPlace</code> implements a decentralized marketplace. An owner can deploy the contract to sell stocks in an asset, which performs two primary functions - A user can buy any number of available units of stock, and the owner can update the unit price at any time.</p>
 
-<p>In a centralized execution environment such as a web server, there is a a rational expectation that calls are atomic, which is commonly the case when they are completed and served on the order of milliseconds.</p>
+<p>In a centralized execution environment such as a web server, there is a a rational expectation that calls are atomic - other calls cannot interrupt execution - which is commonly the case when they are completed and served on the order of milliseconds.</p>
 
 <p>On Ethereum, each contract call is a transaction that updates the state of the contract, and many transactions are bundled together to form a block that enforces a state transition on the blockchain. Let us consider how two such transactions would occur - </p>
 
 <ol>
 <li>User A sends a call T1 to buy a 100 units of stock at $1, which is the current value as per the last block.</li>
 <li>User B - the owner - send a call to UpdatePrice to update the current price to 0.01 cents, with or without the knowledge of A's transaction.</li>
-<li>A block is compiled by a miner once a sufficient number of transactions have been posted, which includes both A and B's transactions. Once the block is mined, their transactions can be considered processed, and the ownership of stock is transferred and the current price updated.</li>
+<li>A miner selects a number of transactions from a pool of unprocessed transactions and mines a block after executing these transactions. Once the block is mined, their transactions can be considered processed, and the ownership of stock is transferred and the current price updated.</li>
 </ol>
 
 <p>We can see how this is problematic. Even if B's transaction was posted after A's, there is a non-zero probability - even in a fair network - that it will be processed first. This means that a malicious owner can update the price to his advantage <strong>after</strong> observing a buy order.</p>
@@ -92,7 +114,10 @@
 
 <hr>
 
-<p>Another class of bugs have been previously found, that exploits the way exceptions are handled in Smart Contracts on Ethereum.</p>
+<h3>
+<a id="slide-9---vulnerabilities-in-the-platform" class="anchor" href="#slide-9---vulnerabilities-in-the-platform" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 9 - Vulnerabilities in the Platform</h3>
+
+<p>Another class of bugs have been previously found that exploits the way exceptions are handled in Smart Contracts on Ethereum.</p>
 
 <p>On the Ethereum network, contracts are allowed to execute in up to a maximum callstack depth of 1024. Attempting to execute a function or contract call at this depth results in an exception. However, this exception is not propagated up the callstack as a default behavior. A contract can ignore the exception, which leads to unexpected and often unfortunate behavior.</p>
 
@@ -102,21 +127,34 @@
 
 <hr>
 
+<h3>
+<a id="slide-10---thedao-bug" class="anchor" href="#slide-10---thedao-bug" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 10 - TheDAO Bug</h3>
+
 <p>Finally, let us consider the vulnerability popularized by TheDAO contract we briefly covered at the beginning. This has been the single largest instance of a smart contract bug - in terms of monetary loss - with the amount lost from TheDAO being larger than all the discovered possible losses of all the other bugs <em>combined</em>. </p>
 
 <p>Let us see how it works. Consider the snippet of code we saw earlier. This particular piece of code is quite self-explanatory. A transfer event is registered to the blockchain, after which a reward is withdrawn andthe contracts internal balances are updated. However, the issue is in the <code>payOut</code> function, which is called by <code>withdrawReward</code>, the offending snippet of which is shown here:</p>
 
 <p>The recipient contract is called with the Ether value (and no limit on the amount of gas), which is at the root of this vulnerability. When a call is made, the recipient contract is executed, and control does not return to the calling contract until is it complete.</p>
 
-<p>Let's consider what happens here. When a call is made, the contract send the payment to a receiving contract, which then performs some function. After this, control returns to the calling contract, and the balances are updated. However, if the contract were malicious, it could use gas from the caller to re-execute the original call and double the payout - this will be valid since the balances have not been updated yet. In fact, this can repeated as many times as needed until the gas is exhausted.</p>
+<p>In order to understand what limits the execution of a contract on Ethereum, we need to consider the fuel for computation on this network - GAS. GAS is a method by which users can pay miners for the execution of a contract. Each instruction is associated with a predetermined GAS cost, and there is a fixed limit to the amount of GAS per block. If a contract execution exceeds the allotted amount of GAS, the miner can consume the GAS cost included in the transaction, and post the failed transaction to the network. This introduces a workaround to the halting problem, as well as the possibility of denial-of-service attacks being performed on the network.</p>
+
+<p>Now let's consider what happens here. When a call is made, the contract sends the payment to a receiving contract along with it's remaining GAS which the receiving contract can use to perform some function. After this, control returns to the calling contract, and the balances are updated. However, if the contract were malicious, it could use gas from the caller to re-execute the original call and double the payout - this will be valid since the balances have not been updated yet. In fact, this can repeated as many times as needed until the gas is exhausted.</p>
+
+<p>This occurs partly because the developer is often unaware of the distinction between a function call and a contract call, as well as the difference between a SEND and a CALL. Intending to send a payment to another contract, he is unaware that the receiving contract may begin executing code that can take advantage of the intermediate state of the calling contract.</p>
 
 <p>This is the attack that crippled theDAO and enabled the attacker to siphon millions out of the contract. It tells us that large decentralised contracts such as theDAO are even more vulnerable to the semantic gaps and lack of understanding, further emphasizing the need for an automated pre-deployment testing.</p>
 
 <hr>
 
-<p>As part of this work, we introduce Oyente, a smart contract analyzer</p>
+<h3>
+<a id="slide-11---solution" class="anchor" href="#slide-11---solution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 11 - Solution</h3>
+
+<p> To solve these problems, we have developed a smart contract analyzer as well an improved formal semantic for the execution of smart contracts. First we will look at how the analyzer functions.</p>
 
 <hr>
+
+<h3>
+<a id="slide-12---architecture" class="anchor" href="#slide-12---architecture" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 12 - Architecture</h3>
 
 <p>The Basic architecture of the tool is built around Symbolic Execution. We will explore this in detail on the next slide.</p>
 
@@ -128,34 +166,45 @@
 <li>The Core Analysis module checks for the existence of bugs.<br>
 </li>
 <li>The Validator then attempts a check for false positives. This is far from complete - currently the module checks Z3 to ensure that the TOD bugs found by the Core Analysis module are present only in <em>feasible</em> paths.</li>
-<li>The Visualizer provides a graphical output for the Control Flow Grap that can aid in manual debugging.</li>
+<li>The Visualizer provides a graphical output for the Control Flow Graph that can aid in manual debugging.</li>
 </ol>
 
 <p>The modular design of the tool allows for easy addition of extension modules to increase test coverage. For example, one proposed addition is a module that can estimate worst-case gas consumption for contracts.</p>
 
 <hr>
 
+<h3>
+<a id="slide-13---symbolic-execution" class="anchor" href="#slide-13---symbolic-execution" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 13 - Symbolic Execution</h3>
+
 <p>Oyente relies on Symbolic Execution using Z3 to perform the path checks that enable bug detection.</p>
 
-<p>Symbolic execution represent the values of program variables as symbolic expressions of input values, which are then used to statically reason about the feasibility of the paths in a program. This is often faster and more comprehensive to implement tests for than dynamic testing, where a program is tested input-for-input.</p>
+<p>Symbolic execution represents the values of program variables as symbolic expressions of input values, which are then used to statically reason about the feasibility of the paths in a program. This is often faster and more comprehensive to implement tests for than dynamic testing, where a program is tested input-for-input.</p>
 
 <p>For example, consider a single path in a program. The path conditions for this particular path are calculated by evaluating the symbolic values of the variables in this path. Once the execution reaches the end of the path, the path conditions are evaluated to determine whether the path is feasible. Here, the path under analysis is feasible since there is a valid value for x that allows execution.</p>
 
 <p>Symbolic execution also makes it easier to reason about validity of contracts, the analysis of which often involves comparing interleaving paths and the exploitation of intermediate states.</p>
 
+<p>Oyente performs this static analysis on bytecode, due to a lack of available source code for Ethereum smart contracts. However, we move beyond simple static analysis, as the Explorer module dynamically constructs edges for the CFG that could not be statically generated.</p>
+
 <hr>
+
+<h3>
+<a id="slide-14---detection" class="anchor" href="#slide-14---detection" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 14 - Detection</h3>
 
 <p>Oyente implements automated detection for all the bugs discussed.</p>
 
 <p>For Transaction Ordering Dependence, the different paths are analysed for possibly concurrent Ether flows. If two separate paths have flows of Ether, Oyente reports it as a TOD Contract.</p>
 
-<p>For Timestamp dependence, a special symbolic variable is associated with the timestamp. If there are any feasible paths affected by this variable, it is reported as timestamp dependent.</p>
+<p>For Timestamp dependence, a special symbolic variable is associated with the timestamp. If there are any feasible paths affected by this variable leading to a payout, it is reported as timestamp dependent. </p>
 
 <p>Detecting a mishandled exception is done by bytecode analysis. A CALL instruction - which corresponds to a function or contract call, places the return value at the top of the stack. If there is no ISZERO instruction which checks for a valid value, the contract is reported to be have a mishandled exception.</p>
 
 <p>Reentrancy Detection is more complicated. Upon encountering a CALL instruction - a possible point of vulnerability - we obtain the path condition for executing the instruction. We then check if the CALL can be executed again through another call to the contract. If so, this is flagged as a possible vulnerability.</p>
 
 <hr>
+
+<h3>
+<a id="slide-15---etherlite" class="anchor" href="#slide-15---etherlite" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slide 15 - Etherlite</h3>
 
 <p>Etherlite is a new set of semantics proposed for Ethereum that aims to remediate these bugs.</p>
 
@@ -169,11 +218,18 @@
 <p>Here are the improvements proposed by Etherlite:</p>
 
 <ol>
-<li>Guard Conditions - The rules for transaction execution have been modified to accept a guard condition, such that the transaction is not processed if the guard condition is not satisfied. The guard conditions can pertain to the state of the contract being executed, such that an expected result is either achieved or none at all. For transactions that do not specify a guard condition, this is set to <code>true</code>, so that the condition is always satisfied.</li>
+<li>Guard Conditions - The rules for transaction execution have been modified to accept a guard condition, such that the transaction is not processed if the guard condition is not satisfied. The guard conditions can pertain to the state of the contract being executed, such that an expected result is either achieved or none at all. For transactions that do not specify a guard condition, this is set to <code>true</code>, so that the condition is always satisfied. With the inclusion of the guard condition, the contract cannot be in an unknown state when the transaction is processed, as the user can specify a strict set of conditions (such as the price being fixed) under which to execute the transaction.</li>
 <li>Deterministic Timestamp - The timestamp variable has been replaced with the block index to model the global time. Since the average block time in Ethereum adjusts to 12 seconds per block, this can provide a representation of time without obfuscating the true granularity of the timestamp thus provided. for contract logic, we can see how this would replace the timestamp. A timeout of 24 hours can be replaced by an equivalent measurement of the block index. </li>
 <li>Better Exception Handling - The exception handling characteristics of the ethereum virtual machine have been updated such that exceptions always halt execution, and are propagated up at the callstack until handled. If an exception is fatal, the transaction is rolled back. This would prevent attacks that take advantage of mishandled exceptions.</li>
 <li>Lower default GAS for CALL - The reentrancy attack can be remedied retroactively by restricting the amount of GAS supplied by default to a CALL or a SEND. Currently a CALL instruction is allotted the entirety of the remaining GAS amount for execution. When this is restricted, the possibility of recursively calling a contract in its intermediate state is limited.</li>
 </ol>
+
+<hr>
+
+<h3>
+<a id="side-16---evaluation" class="anchor" href="#side-16---evaluation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Side 16 - Evaluation</h3>
+
+<p> </p>
 
 <hr>
 
